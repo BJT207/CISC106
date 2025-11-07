@@ -4,7 +4,6 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 
-
 def even_or_odd_bit(num:int) -> str:
     '''
         Consumes an int and returns epresenting the color intensity value
@@ -145,33 +144,33 @@ def get_color_values(image: PIL_Image, channel_index:int) -> list[int]:
                 color_list.append(blue)
     return color_list
 
-def select_file() -> str:    
-    '''
-    This function asks user to select a local PNG file
-      and returns the file name
-
-    Args:
-        None         
-    Returns:
-        str: the file name
-    '''
-    root = tk.Tk()
-    root.withdraw()
-
-    file_path = tk.filedialog.askopenfilename()
-
-    while (file_path == "" or file_path[-4:] != ".png"):   
-        print("Invalid file - must select a PNG file.")
-        file_path = tk.filedialog.askopenfilename()
-
-    file_name = os.path.basename(file_path)  #remove path 
-    return file_name
-
-file_name = select_file()    # allows user to pick an image file
-
-image = PIL_Image.open(file_name).convert('RGB')  # get RGB Pillow Image format of the image file
-
-# get the color intensity values where the message is hidden
-# you must define get_color_values
-green_vals = get_color_values(image, 1)  #use green channel
-print("Message hidden in file: " , get_encoded_message(green_vals))
+# def select_file() -> str:    
+#     '''
+#     This function asks user to select a local PNG file
+#       and returns the file name
+# 
+#     Args:
+#         None         
+#     Returns:
+#         str: the file name
+#     '''
+#     root = tk.Tk()
+#     root.withdraw()
+# 
+#     file_path = tk.filedialog.askopenfilename()
+# 
+#     while (file_path == "" or file_path[-4:] != ".png"):   
+#         print("Invalid file - must select a PNG file.")
+#         file_path = tk.filedialog.askopenfilename()
+# 
+#     file_name = os.path.basename(file_path)  #remove path 
+#     return file_name
+# 
+# file_name = select_file()    # allows user to pick an image file
+# 
+# image = PIL_Image.open(file_name).convert('RGB')  # get RGB Pillow Image format of the image file
+# 
+# # get the color intensity values where the message is hidden
+# # you must define get_color_values
+# green_vals = get_color_values(image, 1)  #use green channel
+# print("Message hidden in file: " , get_encoded_message(green_vals))
